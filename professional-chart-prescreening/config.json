@@ -1,0 +1,793 @@
+{
+  "$schema": "https://raw.githubusercontent.com/revisit-studies/study/v2.3.2/src/parser/StudyConfigSchema.json",
+  "studyMetadata": {
+    "title": "Professional Chart Presecreening",
+    "version": "pilot",
+    "authors": [
+      "Rahat Zaman"
+    ],
+    "date": "2026-03-01",
+    "description": "Human evaluation of LLM chart benchmark results",
+    "organizations": [
+      "University of Utah"
+    ]
+  },
+  "uiConfig": {
+    "contactEmail": "rahat.zaman@utah.edu",
+    "helpTextPath": "professional-chart-prescreening/assets/task-description.md",
+    "logoPath": "revisitAssets/revisitLogoSquare.svg",
+    "nextOnEnter": true,
+    "studyEndMsg": "Thank you for completing the study. You can close this window now.",
+    "withProgressBar": true,
+    "autoDownloadStudy": true,
+    "withSidebar": true
+  },
+  "baseComponents": {
+    "image-output-base": {
+      "type": "website",
+      "path": "professional-chart-prescreening/assets/image-output-stimulus.html",
+      "instruction": "",
+      "instructionLocation": "sidebar",
+      "nextButtonLocation": "sidebar",
+      "sidebarWidth": 600,
+      "response": [
+        {
+          "id": "pass-fail",
+          "prompt": "Pass or Fail",
+          "location": "sidebar",
+          "type": "radio",
+          "options": [
+            {
+              "label": "Pass",
+              "value": "pass"
+            },
+            {
+              "label": "Fail",
+              "value": "fail"
+            }
+          ],
+          "required": true
+        },
+        {
+          "id": "feedback",
+          "type": "longText",
+          "prompt": "Optional feedback or comments",
+          "location": "sidebar",
+          "required": false
+        }
+      ]
+    },
+    "text-output-base": {
+      "type": "website",
+      "path": "professional-chart-prescreening/assets/text-output-stimulus.html",
+      "instruction": "Rate how well the model answered the question about this chart.",
+      "instructionLocation": "aboveStimulus",
+      "response": [
+        {
+          "id": "score",
+          "type": "likert",
+          "numItems": 10,
+          "leftLabel": "Very Poor",
+          "rightLabel": "Excellent",
+          "prompt": "Rate the quality of the model's answer",
+          "location": "belowStimulus",
+          "required": true
+        },
+        {
+          "id": "feedback",
+          "type": "longText",
+          "prompt": "Optional feedback or comments",
+          "location": "belowStimulus",
+          "required": false
+        }
+      ]
+    }
+  },
+  "components": {
+    "Introduction": {
+      "type": "markdown",
+      "path": "professional-chart-prescreening/assets/intro.md",
+      "response": [],
+      "nextOnEnter": true,
+      "withSidebar": false
+    },
+    "task-description": {
+      "type": "markdown",
+      "path": "professional-chart-prescreening/assets/task-description.md",
+      "response": [],
+      "nextOnEnter": true,
+      "withSidebar": false
+    },
+    "conclusion": {
+      "type": "markdown",
+      "path": "professional-chart-prescreening/assets/conclusion.md",
+      "response": [],
+      "withSidebar": false
+    },
+    "10_WP_LINE_t01_annotate_income_values": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add visual annotations to mark three key income values on the chart: label $58,746 near the 2006 data point to show the pre-recession level, label $54,569 near the 2012 point to indicate the recovery low, and label $61,372 near the 2017 point to highlight the peak income level.",
+        "taskType": "annotation",
+        "chartId": "10_WP_LINE",
+        "taskId": "t01_annotate_income_values",
+        "inputImage": "10_WP_LINE/t01_annotate_income_values/input.png",
+        "outputImage": "10_WP_LINE/t01_annotate_income_values/output.png"
+      }
+    },
+    "11_WP_LINE_t01_annotate_covid_waves": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add visual annotations to highlight three significant waves: (1) Add a vertical shaded grey region at the left side of the chart with label 'Jan. 2021 peak' at the top marking the initial peak period, (2) Add a vertical shaded grey region in the middle-right area with label 'Delta wave' at the top marking the Delta variant surge around August-October 2021, and (3) Add a vertical shaded grey region at the far right with label 'Omicron wave' at the top marking the Omicron surge in late 2021 to early 2022. The labels should be positioned above the chart area. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "11_WP_LINE",
+        "taskId": "t01_annotate_covid_waves",
+        "inputImage": "11_WP_LINE/t01_annotate_covid_waves/input.png",
+        "outputImage": "11_WP_LINE/t01_annotate_covid_waves/output.png"
+      }
+    },
+    "12_WP_LINE_t01_annotate_key_events": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add visual annotations to highlight two significant events: (1) Add a vertical dashed line at October 2018 with a text callout above showing 'Oct. 2, 2018' as the header and 'Journalist Jamal Khashoggi is killed in Saudi Consulate in Istanbul' as the description, and (2) Add a vertical dashed line at October 2021 with a text callout above showing 'Oct. 7, 2021' as the header and 'U.N. Human Rights Council ends war crimes probe in Yemen' as the description. The text callouts should be positioned above the chart data area with the date in bold. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "12_WP_LINE",
+        "taskId": "t01_annotate_key_events",
+        "inputImage": "12_WP_LINE/t01_annotate_key_events/input.png",
+        "outputImage": "12_WP_LINE/t01_annotate_key_events/output.png"
+      }
+    },
+    "13_NYT_SCATTER_t01_annotate_country_labels": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add text labels to identify the following key countries: (1) Label the outlier point at the top-right (around 280 million guns, 90 shooters) as 'United States', (2) Label the point at the top-left area (around 3 million guns, 24 shooters) as 'Philippines', (3) Label the point below Philippines as 'Russia', (4) Label the point with around 46 million guns as 'China', and (5) Label the point with around 60 million guns as 'India'. Position the labels near their respective data points for clarity. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "13_NYT_SCATTER",
+        "taskId": "t01_annotate_country_labels",
+        "inputImage": "13_NYT_SCATTER/t01_annotate_country_labels/input.png",
+        "outputImage": "13_NYT_SCATTER/t01_annotate_country_labels/output.png"
+      }
+    },
+    "14_NYT_SCATTER_t01_annotate_quadrants": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Add 'INCREASING FAST FOOD SALES' label near the top of the vertical axis, (2) Add 'DECREASING FAST FOOD SALES' label near the bottom of the vertical axis, (3) Add 'DECREASING WEALTH' label on the left side of the horizontal axis, (4) Add 'INCREASING WEALTH' label on the right side of the horizontal axis. Also add country labels for key outliers: 'Argentina' at the top center (highest fast food sales increase), 'Vietnam' at the top right (high in both metrics), 'Greece' at the bottom left (decreasing in both metrics), and 'United States' near the center-bottom area. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "14_NYT_SCATTER",
+        "taskId": "t01_annotate_quadrants",
+        "inputImage": "14_NYT_SCATTER/t01_annotate_quadrants/input.png",
+        "outputImage": "14_NYT_SCATTER/t01_annotate_quadrants/output.png"
+      }
+    },
+    "15_NYT_SCATTER_t01_annotate_performance_zones": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Draw a horizontal dashed reference line at approximately WAR = 3.5 (around the middle of the y-axis) with a label 'AVERAGE WAR during these contracts' on the left side, (2) Draw a vertical dashed reference line at approximately $22 million salary (around 55% across the x-axis) with a label 'AVERAGE YEARLY SALARY of these contracts' at the bottom, and (3) Add a light red/pink shaded region in the bottom-right quadrant (high salary, below average WAR) to highlight underperforming contracts. This shaded region should cover roughly from $22M to $35M salary and from WAR -2 to about 3.5. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "15_NYT_SCATTER",
+        "taskId": "t01_annotate_performance_zones",
+        "inputImage": "15_NYT_SCATTER/t01_annotate_performance_zones/input.png",
+        "outputImage": "15_NYT_SCATTER/t01_annotate_performance_zones/output.png"
+      }
+    },
+    "19_NYT_SCATTER_t01_annotate_disease_comparison": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Label the disease data points: 'Bird flu' at top-left (highest fatality ~60%), 'Ebola' next to it, 'MERS' and 'SARS' in the upper area, 'Smallpox' in the middle-top, 'Spanish flu' around 5% fatality, 'Seasonal flu' and '2009 flu' in the lower-left, 'Polio' and 'Common cold' at the bottom, 'Chickenpox' at bottom-center, and 'Measles' at far right (most infectious), (2) Add a highlighted shaded region around coordinates (2-4 infected, 2-3% fatality) with a callout box labeled 'New coronavirus' containing text explaining the estimated transmission and fatality rates, (3) Add axis direction indicators: 'More deadly' with an upward arrow on the left, 'Spreads faster' with a rightward arrow at the bottom-right. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "19_NYT_SCATTER",
+        "taskId": "t01_annotate_disease_comparison",
+        "inputImage": "19_NYT_SCATTER/t01_annotate_disease_comparison/input.png",
+        "outputImage": "19_NYT_SCATTER/t01_annotate_disease_comparison/output.png"
+      }
+    },
+    "1_WP_BAR_t01_annotate": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Find the bar named Washingtonpost.com, and then highlight the bar with a different color. Also make the label and the value of the bar to be bold.",
+        "taskType": "annotation",
+        "chartId": "1_WP_BAR",
+        "taskId": "t01_annotate",
+        "inputImage": "1_WP_BAR/t01_annotate/input.png",
+        "outputImage": "1_WP_BAR/t01_annotate/output.png"
+      }
+    },
+    "20_NYT_BAR_t01_annotate_disaster_costs": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations to highlight the most costly disasters: (1) Label the tall dark red bar around 2005 as 'Hurricane Katrina' with '$161 billion', (2) Label the components of the tallest bar (2017) on the right side: 'California wildfires $18 billion' at the top, 'Hurricane Irma $50 billion', 'Hurricane Maria $90 billion', and 'Hurricane Harvey $125 billion' for the different segments, (3) Add a '$300 billion' scale reference at the top of the chart. Position the cost labels to the right of the bars with lines or arrows connecting them to their respective segments. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "20_NYT_BAR",
+        "taskId": "t01_annotate_disaster_costs",
+        "inputImage": "20_NYT_BAR/t01_annotate_disaster_costs/input.png",
+        "outputImage": "20_NYT_BAR/t01_annotate_disaster_costs/output.png"
+      }
+    },
+    "21_NYT_LINE_t01_annotate_justice_labels": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Label each justice's line at the right end with their name: 'Thomas' at the top (+4), 'Alito' around +2, 'Gorsuch' and 'Roberts' in the middle-upper area, 'Kennedy' highlighted in yellow/gold, 'Breyer' and 'Kagan' around -2, 'Ginsburg' and 'Sotomayor' at the bottom around -3, (2) Add a horizontal reference line at score 0 labeled 'Median justice', (3) Add ideological scale indicators on the left: 'MORE CONSERVATIVE' with an upward arrow near the top, and 'MORE LIBERAL' with a downward arrow near the bottom. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "21_NYT_LINE",
+        "taskId": "t01_annotate_justice_labels",
+        "inputImage": "21_NYT_LINE/t01_annotate_justice_labels/input.png",
+        "outputImage": "21_NYT_LINE/t01_annotate_justice_labels/output.png"
+      }
+    },
+    "22_NYT_BAR_t01_annotate_temperature_baseline": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Add a label '20th century average' with a bracket or line pointing to the zero baseline (horizontal axis), (2) Add 'Warmer' label with an upward arrow indicator near the top-left of the y-axis, (3) Add 'Cooler' label with a downward arrow indicator near the bottom-left of the y-axis. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "22_NYT_BAR",
+        "taskId": "t01_annotate_temperature_baseline",
+        "inputImage": "22_NYT_BAR/t01_annotate_temperature_baseline/input.png",
+        "outputImage": "22_NYT_BAR/t01_annotate_temperature_baseline/output.png"
+      }
+    },
+    "23_NYT_BAR_t01_annotate_activision_deal": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotation: Add a callout label pointing to the 2023 YTD bar (the last bar on the right) with text 'Microsoft's blocked bid for Activision' and a connecting line or arrow pointing to the withdrawn deals portion of that bar. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "23_NYT_BAR",
+        "taskId": "t01_annotate_activision_deal",
+        "inputImage": "23_NYT_BAR/t01_annotate_activision_deal/input.png",
+        "outputImage": "23_NYT_BAR/t01_annotate_activision_deal/output.png"
+      }
+    },
+    "24_NYT_BAR_t01_annotate_budget_cuts": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Add a vertical dashed line at 2023 with label 'Projected' at the top to indicate where projections begin, (2) Add a label 'Proposed cuts' pointing to or inside the lighter purple area (the proposed cuts portion) in the projected years. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "24_NYT_BAR",
+        "taskId": "t01_annotate_budget_cuts",
+        "inputImage": "24_NYT_BAR/t01_annotate_budget_cuts/input.png",
+        "outputImage": "24_NYT_BAR/t01_annotate_budget_cuts/output.png"
+      }
+    },
+    "25_NYT_LINE_t01_annotate_fertility_rates": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Label the orange line as 'India' near the middle of the chart, (2) Label the teal/blue line as 'China' near the middle of the chart, (3) Add a shaded region or bracket around the steep decline in China's fertility rate (late 1970s to early 1980s) with label 'One-child policy', (4) Add a horizontal dashed reference line at fertility rate 2.1 (approximately) with label 'Approx. fertility rate for a stable population' on the right side, (5) Add 'Projected' label with an arrow at the top where projections begin (around 2020), (6) Add a callout near India's line around 2020 saying 'India's fertility rate ensures a roughly stable population'. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "25_NYT_LINE",
+        "taskId": "t01_annotate_fertility_rates",
+        "inputImage": "25_NYT_LINE/t01_annotate_fertility_rates/input.png",
+        "outputImage": "25_NYT_LINE/t01_annotate_fertility_rates/output.png"
+      }
+    },
+    "26_NYT_BAR_t01_annotate_bank_failures": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations to label the major bank failures: (1) Label the large segment in 2008 as 'Washington Mutual Bank' with '$432 billion' and an arrow pointing to it, (2) Label the smaller banks in the 2008-2009 peak as '24 other banks' with '$94 billion', (3) For the 2023 bar on the right, add labels for each major bank: 'Silicon Valley Bank' with '$209 billion', 'Signature Bank' with '$110 billion', and 'First Republic Bank' with '$213 billion', with arrows pointing to their respective segments. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "26_NYT_BAR",
+        "taskId": "t01_annotate_bank_failures",
+        "inputImage": "26_NYT_BAR/t01_annotate_bank_failures/input.png",
+        "outputImage": "26_NYT_BAR/t01_annotate_bank_failures/output.png"
+      }
+    },
+    "27_NYT_BAR_t01_annotate_tax_credit": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Add a vertical reference line at the current credit level (around $2,000) with label 'Current 2022 credit' at the bottom, (2) Add a label 'Expansion for older children' pointing to the middle pink segment, (3) Add a label 'Expansion for younger children' pointing to the rightmost light pink segment. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "27_NYT_BAR",
+        "taskId": "t01_annotate_tax_credit",
+        "inputImage": "27_NYT_BAR/t01_annotate_tax_credit/input.png",
+        "outputImage": "27_NYT_BAR/t01_annotate_tax_credit/output.png"
+      }
+    },
+    "28_NYT_LINE_t01_annotate_road_deaths": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Label the thick blue line as 'United States' at the right end, (2) Label the highest line at the start (around 250 per million) as 'Lithuania', (3) Label the second highest declining line as 'Latvia', (4) Label the line that ends around 60-70 at the bottom as 'France', (5) Label the lowest line at the end as 'Japan'. Position labels at the right end of each line for clarity. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "28_NYT_LINE",
+        "taskId": "t01_annotate_road_deaths",
+        "inputImage": "28_NYT_LINE/t01_annotate_road_deaths/input.png",
+        "outputImage": "28_NYT_LINE/t01_annotate_road_deaths/output.png"
+      }
+    },
+    "2_WP_LINE_t01_annotate_income_weeks": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Add a data point marker and label at the start of the line (1985) showing '1985 30 weeks', (2) Add a data point marker and label at the end of the line (2018) showing '2018 53 weeks', (3) Add a horizontal dashed reference line at 52 weeks with the label '52 weeks' on the left side to show when expenses equal one full year of income. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "2_WP_LINE",
+        "taskId": "t01_annotate_income_weeks",
+        "inputImage": "2_WP_LINE/t01_annotate_income_weeks/input.png",
+        "outputImage": "2_WP_LINE/t01_annotate_income_weeks/output.png"
+      }
+    },
+    "30_NYT_LINE_t01_annotate_gas_supply": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Add a vertical dashed line at February 24, 2022 with a label 'Feb. 24' and annotation 'Russia invades Ukraine' pointing to the date when the invasion occurred (the flow was still high at this point), (2) Add a shaded region with label 'Maintenance shutdowns' around July-August 2022 highlighting the period when gas flow dropped significantly and had multiple shutdowns. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "30_NYT_LINE",
+        "taskId": "t01_annotate_gas_supply",
+        "inputImage": "30_NYT_LINE/t01_annotate_gas_supply/input.png",
+        "outputImage": "30_NYT_LINE/t01_annotate_gas_supply/output.png"
+      }
+    },
+    "32_NYT_BAR_t01_annotate_aid_recipients": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Label the first panel (showing declining aid from ~$15 billion) as 'Afghanistan', (2) Label the second panel (steady aid around $3-4 billion) as 'Israel', (3) Label the third panel as 'Iraq', (4) Label the fourth panel as 'Jordan', (5) Label the fifth panel (with a dramatic spike in 2022 shown in dark blue) as 'Ukraine' in bold text to emphasize it. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "32_NYT_BAR",
+        "taskId": "t01_annotate_aid_recipients",
+        "inputImage": "32_NYT_BAR/t01_annotate_aid_recipients/input.png",
+        "outputImage": "32_NYT_BAR/t01_annotate_aid_recipients/output.png"
+      }
+    },
+    "33_WSJ_LINE_t01_annotate_employer_size": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Label the blue line as 'Small employers (fewer than 100)' on the left side, (2) Label the orange line as 'Large employers (2,500 or more)' on the left side, (3) Add a callout with arrow pointing to where the lines cross in the early 1990s saying 'More Americans used to work at smaller companies than large ones...', (4) Add a callout with arrow on the right side where large employers exceed small employers saying '...but that's no longer the case.' Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "33_WSJ_LINE",
+        "taskId": "t01_annotate_employer_size",
+        "inputImage": "33_WSJ_LINE/t01_annotate_employer_size/input.png",
+        "outputImage": "33_WSJ_LINE/t01_annotate_employer_size/output.png"
+      }
+    },
+    "34_WSJ_LINE_t01_annotate_labor_participation": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Add labels on the right side for each line: 'Fathers', 'Women, no children', 'Men, no children', and 'Mothers', (2) Add a shaded region with label 'SUMMER MONTHS' highlighting the summer period (approximately June-August) in the middle of the chart, (3) Add a callout with arrow pointing to the steep initial drop of the mothers' line saying 'Mothers' initial drop was steepest.' Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "34_WSJ_LINE",
+        "taskId": "t01_annotate_labor_participation",
+        "inputImage": "34_WSJ_LINE/t01_annotate_labor_participation/input.png",
+        "outputImage": "34_WSJ_LINE/t01_annotate_labor_participation/output.png"
+      }
+    },
+    "36_WSJ_LINE_t01_annotate_executive_orders": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Label the top line ending at 40 as 'Joe Biden' on the right, (2) Label the second highest line as 'Donald Trump', (3) Label the blue line ending around 19 as 'Barack Obama', (4) Label the lowest highlighted line as 'George W. Bush', (5) Add 'Other presidents' label for the grey lines, (6) Add a callout pointing to Biden's steep rise on day 1 saying 'Nine executive orders on Jan. 20', (7) Add a callout near Biden's endpoint saying '40 executive orders as of April 30'. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "36_WSJ_LINE",
+        "taskId": "t01_annotate_executive_orders",
+        "inputImage": "36_WSJ_LINE/t01_annotate_executive_orders/input.png",
+        "outputImage": "36_WSJ_LINE/t01_annotate_executive_orders/output.png"
+      }
+    },
+    "37_WSJ_LINE_t01_annotate_approval_ratings": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Label each president's line on the right side: 'Kennedy' at the top (~78%), 'Obama' around 65%, 'Bush' around 62%, 'Biden' (bold, highlighted in dark blue) around 55%, 'Clinton' around 55%, and 'Trump' at the bottom (~40%), (2) Add 'Other presidents' label for the grey lines in the middle, (3) Add a shaded horizontal band around Biden's line showing his approval range with a callout saying 'Biden's approval ranges between 54 - 57%'. Keep the annotation or whatever you add stylistically consistent with the theme of the given chart (font style, size, color etc.). Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "37_WSJ_LINE",
+        "taskId": "t01_annotate_approval_ratings",
+        "inputImage": "37_WSJ_LINE/t01_annotate_approval_ratings/input.png",
+        "outputImage": "37_WSJ_LINE/t01_annotate_approval_ratings/output.png"
+      }
+    },
+    "3_WP_BAR_t01_annotate_unemployment_claims": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotation: Add a callout with an arrow pointing to one of the recent bars (around July) with the label 'July 5 to July 11' and the value '1,300,000' to show the current week's claims at the time of the chart. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "3_WP_BAR",
+        "taskId": "t01_annotate_unemployment_claims",
+        "inputImage": "3_WP_BAR/t01_annotate_unemployment_claims/input.png",
+        "outputImage": "3_WP_BAR/t01_annotate_unemployment_claims/output.png"
+      }
+    },
+    "40_WSJ_BAR_t01_annotate_inflation_changes": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Add a horizontal dashed reference line at 2% with label 'Target rate: 2%', (2) Add a callout with arrow pointing to the March-April 2020 drop saying 'Annual inflation slumped at the onset of the pandemic, with a March drop pulling the rate below 2%.', (3) Add a callout with arrow pointing to the March 2021 rise saying 'March 2021 prices were high relative to 2020's slump, which helped boost inflation above 2%.', (4) Add a label at the final May 2021 bar showing 'MAY 2021 5.0% annual inflation'. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "40_WSJ_BAR",
+        "taskId": "t01_annotate_inflation_changes",
+        "inputImage": "40_WSJ_BAR/t01_annotate_inflation_changes/input.png",
+        "outputImage": "40_WSJ_BAR/t01_annotate_inflation_changes/output.png"
+      }
+    },
+    "41_WSJ_BAR_t01_annotate_price_categories": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Add category header labels 'NONEDIBLE PRODUCTS' above the left group and 'EDIBLE PRODUCTS' above the right group, (2) Add percentage values on top of each bar: 3.4%, 3.3%, 5.3 for nonedible and 1.8, 1.0, 4.2 for edible, (3) Add a horizontal dashed reference band or lines at 1-2% with a callout on the right saying 'Prices normally fluctuate between 1%-2% year over year', (4) Add a '5%' reference line at the top. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "41_WSJ_BAR",
+        "taskId": "t01_annotate_price_categories",
+        "inputImage": "41_WSJ_BAR/t01_annotate_price_categories/input.png",
+        "outputImage": "41_WSJ_BAR/t01_annotate_price_categories/output.png"
+      }
+    },
+    "42_WSJ_BAR_t01_annotate_protest_weekend": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotation: Add a shaded region or bracket with the label 'WEEKEND' highlighting the May 30-31 period (Saturday-Sunday) when protests were at their peak (approximately 180-200 locations). Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "42_WSJ_BAR",
+        "taskId": "t01_annotate_protest_weekend",
+        "inputImage": "42_WSJ_BAR/t01_annotate_protest_weekend/input.png",
+        "outputImage": "42_WSJ_BAR/t01_annotate_protest_weekend/output.png"
+      }
+    },
+    "43_WSJ_LINE_t01_annotate_holiday_markers": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Add a vertical dashed reference line at late May with label 'Memorial Day' at the top, (2) Add a vertical dashed reference line at early July with label 'July 4' at the top, (3) Add a vertical dashed reference line at early September with label 'Labor Day' at the top, (4) Add a vertical dashed reference line at mid-October with label 'Columbus Day' at the top. These holiday markers help show how case counts changed after major gathering events. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "43_WSJ_LINE",
+        "taskId": "t01_annotate_holiday_markers",
+        "inputImage": "43_WSJ_LINE/t01_annotate_holiday_markers/input.png",
+        "outputImage": "43_WSJ_LINE/t01_annotate_holiday_markers/output.png"
+      }
+    },
+    "44_WSJ_BAR_t01_annotate_recession_labels": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Label the August 1929 bar (second longest, ~43 months) with '43 months The Great Depression' on the right side, (2) Label the December 2007 bar (grey, ~18 months) with '18 months Financial crisis', (3) Label the March 2001 bar with '8 months 2001 recession', (4) Label the February 2020 bar (shortest, ~2 months) with '2 months Covid-19 recession'. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "44_WSJ_BAR",
+        "taskId": "t01_annotate_recession_labels",
+        "inputImage": "44_WSJ_BAR/t01_annotate_recession_labels/input.png",
+        "outputImage": "44_WSJ_BAR/t01_annotate_recession_labels/output.png"
+      }
+    },
+    "45_WSJ_BAR_t01_annotate_covid_recession": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotation: Add a callout with an arrow pointing to the most recent recession band (at the far right, around 2020) with the label 'Covid-19 recession'. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "45_WSJ_BAR",
+        "taskId": "t01_annotate_covid_recession",
+        "inputImage": "45_WSJ_BAR/t01_annotate_covid_recession/input.png",
+        "outputImage": "45_WSJ_BAR/t01_annotate_covid_recession/output.png"
+      }
+    },
+    "47_WSJ_BAR_t01_annotate_xi_term": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Add a vertical dashed reference line at 2012 with label 'XI JINPING'S TERM' at the top indicating when Xi Jinping became leader, (2) Add a callout with arrow pointing to the dramatic drop in 2020 (around 2% GDP growth) with label 'Covid pandemic begins'. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "47_WSJ_BAR",
+        "taskId": "t01_annotate_xi_term",
+        "inputImage": "47_WSJ_BAR/t01_annotate_xi_term/input.png",
+        "outputImage": "47_WSJ_BAR/t01_annotate_xi_term/output.png"
+      }
+    },
+    "48_WSJ_BAR_t01_annotate_patent_comparison": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Add a legend or labels identifying 'China' for the red bars and 'U.S.' for the blue bars in the upper left area, (2) Add a vertical dashed reference line at 2012 with label 'XI JINPING'S TERM' at the top, indicating when Xi Jinping's leadership began and China's patent applications accelerated dramatically. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "48_WSJ_BAR",
+        "taskId": "t01_annotate_patent_comparison",
+        "inputImage": "48_WSJ_BAR/t01_annotate_patent_comparison/input.png",
+        "outputImage": "48_WSJ_BAR/t01_annotate_patent_comparison/output.png"
+      }
+    },
+    "49_WSJ_LINE_t01_annotate_xi_discipline": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotation: Add a vertical dashed reference line at 2012 with label 'XI JINPING'S TERM' at the top, indicating when Xi Jinping began his anti-corruption campaign which led to the dramatic increase in disciplinary actions. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "49_WSJ_LINE",
+        "taskId": "t01_annotate_xi_discipline",
+        "inputImage": "49_WSJ_LINE/t01_annotate_xi_discipline/input.png",
+        "outputImage": "49_WSJ_LINE/t01_annotate_xi_discipline/output.png"
+      }
+    },
+    "4_WP_LINE_t01_annotate_datapoints": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add visual annotations to highlight three key data points: (1) Add a filled dot at the beginning of 2019 with the label '8.7 million' showing the baseline level, (2) Add a filled dot at the peak before the pandemic drop around March 2020 with the label '9.7 million', and (3) Add an open circle at the end of July 2020 with the label '8.8 million' showing the recovery level. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "4_WP_LINE",
+        "taskId": "t01_annotate_datapoints",
+        "inputImage": "4_WP_LINE/t01_annotate_datapoints/input.png",
+        "outputImage": "4_WP_LINE/t01_annotate_datapoints/output.png"
+      }
+    },
+    "50_WSJ_BAR_t01_annotate_stock_performance": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Label each company on their bars: 'Nvidia' at the top, 'Apple' second, 'Alphabet' third, 'Microsoft' fourth, 'Meta Platforms' at the bottom, (2) Add percentage values at the end of each bar: -48% and +466% for Nvidia, -28 and +224 for Apple, -27 and +175 for Alphabet, -28 and +146 for Microsoft, -51 and +129 for Meta, (3) Add reference labels at the bottom showing 'S&P 500 bear market -22%' and 'S&P 500 bull market +114%'. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "50_WSJ_BAR",
+        "taskId": "t01_annotate_stock_performance",
+        "inputImage": "50_WSJ_BAR/t01_annotate_stock_performance/input.png",
+        "outputImage": "50_WSJ_BAR/t01_annotate_stock_performance/output.png"
+      }
+    },
+    "51_WSJ_LINE_t01_annotate_sector_performance": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Add sector labels on the right side: 'Energy' (top, magenta), 'Technology' (pink), 'Healthcare' (gold), 'S&P 500' (black dotted), 'Consumer discretionary', 'Utilities', 'Communication services', (2) Add a vertical marker at the left with label 'Feb. 19, 2020 S&P 500 prepandemic high', (3) Add a vertical marker at the lowest point with label 'March 23, 2020 Pandemic low', (4) Add a vertical marker at the peak with label 'Jan. 3, 2022 Record close', (5) Add a shaded region at the end with label 'BEAR MARKET', (6) Add a callout for Energy sector saying 'Energy was the only sector that rose during the slide into a bear market.', (7) Add a callout pointing to the Energy sector's early drop saying 'The energy sector took the biggest hit during the 2020 bear market.' Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "51_WSJ_LINE",
+        "taskId": "t01_annotate_sector_performance",
+        "inputImage": "51_WSJ_LINE/t01_annotate_sector_performance/input.png",
+        "outputImage": "51_WSJ_LINE/t01_annotate_sector_performance/output.png"
+      }
+    },
+    "54_ECO_SCATTER_t01_annotate_gdp_forecasts": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Add a legend in the upper left area identifying the forecasters: 'Goldman Sachs' (dark grey), 'OECD' (light grey), 'EIU' (red), 'The Economist' (pink), (2) Add a label 'Trend line' pointing to or near the curved grey trend line that shows how predictions have changed over time, (3) Add a label on the right y-axis clarifying 'Predicted overtake year'. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "54_ECO_SCATTER",
+        "taskId": "t01_annotate_gdp_forecasts",
+        "inputImage": "54_ECO_SCATTER/t01_annotate_gdp_forecasts/input.png",
+        "outputImage": "54_ECO_SCATTER/t01_annotate_gdp_forecasts/output.png"
+      }
+    },
+    "55_ECO_BAR_t01_annotate_war_budgets": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Add percentage values at the end of each bar: approximately 60% for USSR WWII, 52% for US WWII, 4.2 for Korean war, 3.0 for Ukraine war, 2.3 for Vietnam war, 1.0 for Iraq war, 0.4 for Afghanistan, 0.3 for Gulf war, (2) Highlight or bold the 'Russia, Ukraine war' row to emphasize it as the current/recent conflict being compared to historical wars. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "55_ECO_BAR",
+        "taskId": "t01_annotate_war_budgets",
+        "inputImage": "55_ECO_BAR/t01_annotate_war_budgets/input.png",
+        "outputImage": "55_ECO_BAR/t01_annotate_war_budgets/output.png"
+      }
+    },
+    "56_ECO_LINE_t01_annotate_covid_deaths": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotation: Add a shaded region with label 'Covid-19' highlighting the 2020-2021 period when deaths spiked dramatically from about 58 million to approximately 68 million per year. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "56_ECO_LINE",
+        "taskId": "t01_annotate_covid_deaths",
+        "inputImage": "56_ECO_LINE/t01_annotate_covid_deaths/input.png",
+        "outputImage": "56_ECO_LINE/t01_annotate_covid_deaths/output.png"
+      }
+    },
+    "57_ECO_LINE_t01_annotate_cable_news": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Add network labels near their respective lines: 'Fox' (red, top), 'MSNBC' (light blue), 'CNN' (dark blue), 'Newsmax' (pink, bottom), (2) Add a callout with arrow pointing to the Fox peak (around 6.5 million) saying 'Donald Trump arraigned', (3) Add a callout pointing to a Fox spike saying 'Carlson interviews Trump', (4) Add a callout pointing to the Fox drop saying 'Carlson sacked', (5) Add a callout pointing to the CNN spike saying 'Trump's \"town-hall\" interview on CNN'. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "57_ECO_LINE",
+        "taskId": "t01_annotate_cable_news",
+        "inputImage": "57_ECO_LINE/t01_annotate_cable_news/input.png",
+        "outputImage": "57_ECO_LINE/t01_annotate_cable_news/output.png"
+      }
+    },
+    "59_ECO_BAR_t01_annotate_eurovision_languages": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Add vertical reference lines to mark three distinct eras with boxes/regions: first era from 1956 to ~1965, second era from ~1966 to ~1976, third era from ~1977 to ~1999, (2) Add a label inside or above the third era (1977-1999) saying 'Restricted to songs in national language' to indicate the rule that limited English songs during that period. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "59_ECO_BAR",
+        "taskId": "t01_annotate_eurovision_languages",
+        "inputImage": "59_ECO_BAR/t01_annotate_eurovision_languages/input.png",
+        "outputImage": "59_ECO_BAR/t01_annotate_eurovision_languages/output.png"
+      }
+    },
+    "5_WP_LINE_t01_annotate_key_dates": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add visual annotations to highlight two important data points: (1) Circle the starting point (top-left area) and add a label 'June 2010' with 'S&P: 1,031' and 'Unemployment: 9.4%', and (2) Circle the data point around March 2020 (where there's a notable deviation in the trend) and add a label 'March 2020' with 'S&P: 2,585' and 'Unemployment: 4.4%'. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "5_WP_LINE",
+        "taskId": "t01_annotate_key_dates",
+        "inputImage": "5_WP_LINE/t01_annotate_key_dates/input.png",
+        "outputImage": "5_WP_LINE/t01_annotate_key_dates/output.png"
+      }
+    },
+    "61_ECO_BAR_t01_annotate_grain_exports": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Add a vertical line with label 'Russia invades Ukraine' pointing to the period in early 2022 when exports began surging, (2) Add a callout label 'Creation of \"solidarity corridors\" for transporting grain' with an arrow pointing to the peak export period in mid-to-late 2022. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "61_ECO_BAR",
+        "taskId": "t01_annotate_grain_exports",
+        "inputImage": "61_ECO_BAR/t01_annotate_grain_exports/input.png",
+        "outputImage": "61_ECO_BAR/t01_annotate_grain_exports/output.png"
+      }
+    },
+    "62_ECO_LINE_t01_annotate_douban_views": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Label the light blue line as 'Anglo films' near its start around 55% in 2011, (2) Label the red line as 'Mainland Chinese' near its peak around 58% in 2021, (3) Label the grey line as 'Other origin' near the bottom around 15-20%, (4) Add a shaded grey region for the 'Pandemic' period covering approximately 2020-2021 when significant shifts occurred. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "62_ECO_LINE",
+        "taskId": "t01_annotate_douban_views",
+        "inputImage": "62_ECO_LINE/t01_annotate_douban_views/input.png",
+        "outputImage": "62_ECO_LINE/t01_annotate_douban_views/output.png"
+      }
+    },
+    "63_ECO_LINE_t01_annotate_test_scores": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Add a vertical line at the year 2020 with the label 'No standardised tests due to lockdowns' to indicate the gap in testing during COVID lockdowns, (2) Make the line segments between 2019 and 2021 dashed to indicate the gap period where no tests were conducted. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "63_ECO_LINE",
+        "taskId": "t01_annotate_test_scores",
+        "inputImage": "63_ECO_LINE/t01_annotate_test_scores/input.png",
+        "outputImage": "63_ECO_LINE/t01_annotate_test_scores/output.png"
+      }
+    },
+    "64_ECO_SCATTER_t01_annotate_gas_usage": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Label the dashed trend line as '2013-22 trend' near the upper-left portion of the line, (2) Label the three pink outlier dots at the bottom-center: 'Dec 2022' for the leftmost, 'Jan 2023' for the lowest, and 'Feb 2023' for the rightmost, indicating the recent winter months with significantly reduced gas usage. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "64_ECO_SCATTER",
+        "taskId": "t01_annotate_gas_usage",
+        "inputImage": "64_ECO_SCATTER/t01_annotate_gas_usage/input.png",
+        "outputImage": "64_ECO_SCATTER/t01_annotate_gas_usage/output.png"
+      }
+    },
+    "65_ECO_BAR_t01_annotate_mask_studies": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Add a callout box near MacIntyre 2009 saying 'Australian households with a child with flu-like illness were asked to wear masks. Just 38% did', (2) Add a callout box near Suess 2012 saying 'American university students divided into mask v non-mask groups based on halls of residence', (3) Add a callout box near Aiello 2012 saying '245 households in Beijing with a flu-positive family member randomised into mask or control groups', (4) Add a callout box near Alfelali 2020 saying 'Recruited 7,600 Muslim haj pilgrims over three seasons. Only 25% of people in the mask group wore one', (5) Add a callout box near Abaluck 2022 saying 'The only big study of mask mandates during the pandemic, conducted across 600 villages in Bangladesh', (6) Add an x-axis label 'Risk ratio of mask-wearing group compared with control, log scale'. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "65_ECO_BAR",
+        "taskId": "t01_annotate_mask_studies",
+        "inputImage": "65_ECO_BAR/t01_annotate_mask_studies/input.png",
+        "outputImage": "65_ECO_BAR/t01_annotate_mask_studies/output.png"
+      }
+    },
+    "66_ECO_LINE_t01_annotate_fed_rate": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Add a label 'Market expectations' in the upper right area above the forked projections, (2) Label the grey projection line 'At: March 1st' with a dot at its endpoint around 5.25%, (3) Label the light blue projection line 'March 21st' with a dot at its endpoint around 4.0%, (4) Add a light grey shaded region behind the forked projection area to indicate the forecast period. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "66_ECO_LINE",
+        "taskId": "t01_annotate_fed_rate",
+        "inputImage": "66_ECO_LINE/t01_annotate_fed_rate/input.png",
+        "outputImage": "66_ECO_LINE/t01_annotate_fed_rate/output.png"
+      }
+    },
+    "67_ECO_LINE_t01_annotate_deaths_despair": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Add a vertical reference line at approximately 1996 with the label 'OxyContin painkiller introduced', (2) Add a numbered callout '1. Deaths of despair were declining until the opioid epidemic hit' with an arrow pointing to the early 1980s dip in the All line, (3) Add a numbered callout '2. The downward trend ended earlier among middle-aged whites' with an arrow pointing to the mid-1990s where the Whites line starts rising, (4) Add a dashed line labeled 'Pre-1990s trend' extending from the 1979 starting point of the All line forward to show what the trajectory would have been without the opioid crisis. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "67_ECO_LINE",
+        "taskId": "t01_annotate_deaths_despair",
+        "inputImage": "67_ECO_LINE/t01_annotate_deaths_despair/input.png",
+        "outputImage": "67_ECO_LINE/t01_annotate_deaths_despair/output.png"
+      }
+    },
+    "68_ECO_SCATTER_t01_annotate_state_labels": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Add state name labels next to each data point. The key states to label are: 'California' (upper left, ~33), 'Arizona' (upper center, ~34), 'Florida' (upper right of center, ~32), 'Oregon' (left, ~29), 'Colorado' (center-left, ~29), 'Pennsylvania' (center, ~26), 'Michigan' (center, ~25.5), 'Massachusetts' (left, ~25), 'Kentucky' (center, ~24), 'New York' (center-left, ~23.5), 'Louisiana' (center, ~23), 'Oklahoma' (center, ~23), 'Georgia' (right, ~25), 'Tennessee' (right, ~24), 'Connecticut' (center-left, ~21), 'Minnesota' (center, ~20), 'Mississippi' (center-right, ~20), 'North Dakota' (far right, ~20), (2) Add a dashed red downward-sloping trend line through the data points. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "68_ECO_SCATTER",
+        "taskId": "t01_annotate_state_labels",
+        "inputImage": "68_ECO_SCATTER/t01_annotate_state_labels/input.png",
+        "outputImage": "68_ECO_SCATTER/t01_annotate_state_labels/output.png"
+      }
+    },
+    "6_WP_LINE_t01_annotate_uncertainty": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add visual annotations to show uncertainty in the projections: (1) Add a shaded gray uncertainty band that widens from April onwards, showing the range between optimistic and pessimistic scenarios, (2) Add a dotted horizontal line at the 40,000 level with the label '40,000' representing the lower bound, (3) Add a dotted horizontal line at the 170,000 level with the label '170,000' representing the upper bound, (4) Add the label '91,000' near the main projection line around May showing the central estimate, and (5) Add the text 'UNCERTAINTY' in the shaded region. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "6_WP_LINE",
+        "taskId": "t01_annotate_uncertainty",
+        "inputImage": "6_WP_LINE/t01_annotate_uncertainty/input.png",
+        "outputImage": "6_WP_LINE/t01_annotate_uncertainty/output.png"
+      }
+    },
+    "71_ECO_SCATTER_t01_annotate_earthquake_damage": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add the following annotations: (1) Label the highest outlier dot (approximately 30% at price ~5,000) as 'Hayrullah district', (2) Label the second highest outlier (approximately 20% at price ~5,000) as 'Ismet Pasa', (3) Add a label '\u2191 More damage' on the right side of the chart near the y-axis to indicate the direction of increasing damage. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "71_ECO_SCATTER",
+        "taskId": "t01_annotate_earthquake_damage",
+        "inputImage": "71_ECO_SCATTER/t01_annotate_earthquake_damage/input.png",
+        "outputImage": "71_ECO_SCATTER/t01_annotate_earthquake_damage/output.png"
+      }
+    },
+    "7_WP_LINE_t01_annotate_milestones": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add visual annotations to highlight four key milestones: (1) Add a dot and label '1 ship Jan. 1, 2020' at the starting point showing the baseline, (2) Add a dot and label '40 Feb. 1, 2021' at the first peak during the initial COVID wave, (3) Add a dot and label '73 Sept. 19' at the highest point showing the peak backlog, and (4) Add a dot and label '63 Oct. 11' at the end of the chart. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "7_WP_LINE",
+        "taskId": "t01_annotate_milestones",
+        "inputImage": "7_WP_LINE/t01_annotate_milestones/input.png",
+        "outputImage": "7_WP_LINE/t01_annotate_milestones/output.png"
+      }
+    },
+    "8_WP_BAR_t01_annotate_inflation_drivers": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add visual annotations to explain the used vehicle contribution to inflation: (1) Add upward arrows on the bars from March to June (the spring months) pointing to the yellow 'used vehicle' segment, (2) Add a callout box near April with text explaining 'Used vehicles added 0.3 percentage points to monthly inflation from March to April', (3) Add downward arrows on the August and September bars, and (4) Add a callout box near August/September explaining 'Used vehicle prices fell in Aug. and Sept., reducing inflation'. The word 'added' should be highlighted in the first callout and 'reducing' in the second. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "8_WP_BAR",
+        "taskId": "t01_annotate_inflation_drivers",
+        "inputImage": "8_WP_BAR/t01_annotate_inflation_drivers/input.png",
+        "outputImage": "8_WP_BAR/t01_annotate_inflation_drivers/output.png"
+      }
+    },
+    "9_WP_LINE_t01_annotate_series_labels": {
+      "baseComponent": "image-output-base",
+      "parameters": {
+        "taskPrompt": "Add text annotations to explain each series: (1) Near the green 'New-vehicle prices' line (top right), add a label 'New-vehicle prices' in green with the explanation 'began to rise as supply chain issues snarled manufacturing', (2) Near the blue 'Used-vehicle prices' line, add a label 'Used-vehicle prices' in blue with the explanation 'soared as fewer new cars were made', and (3) Near the purple 'Rental companies' line (bottom), add a label 'Rental companies' in purple with the explanation 'had fewer price hikes after dealing with depleted inventory and surging demand in 2021'. Return the annotated image.",
+        "taskType": "annotation",
+        "chartId": "9_WP_LINE",
+        "taskId": "t01_annotate_series_labels",
+        "inputImage": "9_WP_LINE/t01_annotate_series_labels/input.png",
+        "outputImage": "9_WP_LINE/t01_annotate_series_labels/output.png"
+      }
+    }
+  },
+  "sequence": {
+    "order": "fixed",
+    "components": [
+      "Introduction",
+      "task-description",
+      {
+        "order": "random",
+        "components": [
+          "10_WP_LINE_t01_annotate_income_values",
+          "11_WP_LINE_t01_annotate_covid_waves",
+          "12_WP_LINE_t01_annotate_key_events",
+          "13_NYT_SCATTER_t01_annotate_country_labels",
+          "14_NYT_SCATTER_t01_annotate_quadrants",
+          "15_NYT_SCATTER_t01_annotate_performance_zones",
+          "19_NYT_SCATTER_t01_annotate_disease_comparison",
+          "1_WP_BAR_t01_annotate",
+          "20_NYT_BAR_t01_annotate_disaster_costs",
+          "21_NYT_LINE_t01_annotate_justice_labels",
+          "22_NYT_BAR_t01_annotate_temperature_baseline",
+          "23_NYT_BAR_t01_annotate_activision_deal",
+          "24_NYT_BAR_t01_annotate_budget_cuts",
+          "25_NYT_LINE_t01_annotate_fertility_rates",
+          "26_NYT_BAR_t01_annotate_bank_failures",
+          "27_NYT_BAR_t01_annotate_tax_credit",
+          "28_NYT_LINE_t01_annotate_road_deaths",
+          "2_WP_LINE_t01_annotate_income_weeks",
+          "30_NYT_LINE_t01_annotate_gas_supply",
+          "32_NYT_BAR_t01_annotate_aid_recipients",
+          "33_WSJ_LINE_t01_annotate_employer_size",
+          "34_WSJ_LINE_t01_annotate_labor_participation",
+          "36_WSJ_LINE_t01_annotate_executive_orders",
+          "37_WSJ_LINE_t01_annotate_approval_ratings",
+          "3_WP_BAR_t01_annotate_unemployment_claims",
+          "40_WSJ_BAR_t01_annotate_inflation_changes",
+          "41_WSJ_BAR_t01_annotate_price_categories",
+          "42_WSJ_BAR_t01_annotate_protest_weekend",
+          "43_WSJ_LINE_t01_annotate_holiday_markers",
+          "44_WSJ_BAR_t01_annotate_recession_labels",
+          "45_WSJ_BAR_t01_annotate_covid_recession",
+          "47_WSJ_BAR_t01_annotate_xi_term",
+          "48_WSJ_BAR_t01_annotate_patent_comparison",
+          "49_WSJ_LINE_t01_annotate_xi_discipline",
+          "4_WP_LINE_t01_annotate_datapoints",
+          "50_WSJ_BAR_t01_annotate_stock_performance",
+          "51_WSJ_LINE_t01_annotate_sector_performance",
+          "54_ECO_SCATTER_t01_annotate_gdp_forecasts",
+          "55_ECO_BAR_t01_annotate_war_budgets",
+          "56_ECO_LINE_t01_annotate_covid_deaths",
+          "57_ECO_LINE_t01_annotate_cable_news",
+          "59_ECO_BAR_t01_annotate_eurovision_languages",
+          "5_WP_LINE_t01_annotate_key_dates",
+          "61_ECO_BAR_t01_annotate_grain_exports",
+          "62_ECO_LINE_t01_annotate_douban_views",
+          "63_ECO_LINE_t01_annotate_test_scores",
+          "64_ECO_SCATTER_t01_annotate_gas_usage",
+          "65_ECO_BAR_t01_annotate_mask_studies",
+          "66_ECO_LINE_t01_annotate_fed_rate",
+          "67_ECO_LINE_t01_annotate_deaths_despair",
+          "68_ECO_SCATTER_t01_annotate_state_labels",
+          "6_WP_LINE_t01_annotate_uncertainty",
+          "71_ECO_SCATTER_t01_annotate_earthquake_damage",
+          "7_WP_LINE_t01_annotate_milestones",
+          "8_WP_BAR_t01_annotate_inflation_drivers",
+          "9_WP_LINE_t01_annotate_series_labels"
+        ]
+      },
+      "conclusion"
+    ]
+  }
+}
