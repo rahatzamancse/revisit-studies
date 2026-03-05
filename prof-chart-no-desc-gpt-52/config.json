@@ -19,7 +19,7 @@
     "nextOnEnter": false,
     "studyEndMsg": "Thank you for completing the study. You can close this window now.",
     "withProgressBar": true,
-    "autoDownloadStudy": true,
+    "autoDownloadStudy": false,
     "withSidebar": true
   },
   "baseComponents": {
