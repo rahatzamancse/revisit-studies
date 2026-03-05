@@ -29,6 +29,7 @@
       "instruction": "",
       "instructionLocation": "sidebar",
       "nextButtonLocation": "sidebar",
+      "nextOnEnter": false,
       "sidebarWidth": 600,
       "response": [
         {
