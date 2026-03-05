@@ -1,6 +1,7 @@
 {
-  "$schema": "https://raw.githubusercontent.com/revisit-studies/study/v2.4.0/src/parser/GlobalConfigSchema.json",
+  "$schema": "https://raw.githubusercontent.com/revisit-studies/study/v2.4.1/src/parser/GlobalConfigSchema.json",
   "configsList": [
+    "prof-chart-no-desc-gpt-52",
     "professional-chart-prescreening",
     "tutorial",
     "tutorial-replication",
@@ -56,6 +57,9 @@
     "test-step-logic"
   ],
   "configs": {
+    "prof-chart-no-desc-gpt-52": {
+      "path": "prof-chart-no-desc-gpt-52/config.json"
+    },
     "professional-chart-prescreening": {
       "path": "professional-chart-prescreening/config.json"
     },
