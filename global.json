@@ -1,6 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/revisit-studies/study/v2.4.1/src/parser/GlobalConfigSchema.json",
   "configsList": [
+    "prof-chart-no-desc-gpt-52-missing-fix",
     "prof-chart-no-desc-gpt-52",
     "professional-chart-prescreening",
     "tutorial",
@@ -57,6 +58,9 @@
     "test-step-logic"
   ],
   "configs": {
+    "prof-chart-no-desc-gpt-52-missing-fix": {
+      "path": "prof-chart-no-desc-gpt-52-missing-fix/config.json"
+    },
     "prof-chart-no-desc-gpt-52": {
       "path": "prof-chart-no-desc-gpt-52/config.json"
     },
