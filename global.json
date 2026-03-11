@@ -1,6 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/revisit-studies/study/v2.4.1/src/parser/GlobalConfigSchema.json",
   "configsList": [
+    "annobench-gemini-claude-chatgpt-svg-d3-vegalite",
     "prof-chart-no-desc-gpt-52-missing-fix",
     "prof-chart-no-desc-gpt-52",
     "professional-chart-prescreening",
@@ -58,6 +59,9 @@
     "test-step-logic"
   ],
   "configs": {
+    "annobench-gemini-claude-chatgpt-svg-d3-vegalite": {
+      "path": "annobench-gemini-claude-chatgpt-svg-d3-vegalite/config.json"
+    },
     "prof-chart-no-desc-gpt-52-missing-fix": {
       "path": "prof-chart-no-desc-gpt-52-missing-fix/config.json"
     },
