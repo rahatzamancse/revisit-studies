@@ -1,33 +1,14 @@
 {
   "$schema": "https://raw.githubusercontent.com/revisit-studies/study/v2.4.1/src/parser/GlobalConfigSchema.json",
   "configsList": [
-    "annobench-mass-study-1-part-1",
-    "annobench-mass-study-1-part-2",
-    "annobench-mass-study-1-part-3",
-    "annobench-mass-study-1-part-4",
-    "annobench-mass-study-1-part-5",
-    "annobench-mass-study-1-part-6",
-    "annobench-mass-study-1-part-7",
-    "annobench-mass-study-1-part-8",
-    "annobench-mass-study-1-part-9",
-    "annobench-mass-study-1-part-10",
-    "annobench-mass-study-1-part-11",
-    "annobench-mass-study-1-part-12",
-    "annobench-mass-study-1-part-13",
-    "annobench-mass-study-1-part-14",
-    "annobench-mass-study-1-part-15",
-    "annobench-mass-study-1-part-16",
-    "annobench-mass-study-1-part-17",
-    "annobench-mass-study-1-part-18",
-    "annobench-mass-study-1-part-19",
-    "annobench-mass-study-1-part-20",
-    "annobench-mass-study-1-part-21",
-    "annobench-mass-study-1-part-22",
-    "annobench-mass-study-1-part-23",
-    "annobench-mass-study-1-part-24",
-    "prof-chart-no-desc-gpt-52-missing-fix",
-    "prof-chart-no-desc-gpt-52",
-    "professional-chart-prescreening",
+    "annobench-e1-representation-part-1",
+    "annobench-e1-representation-part-2",
+    "annobench-e1-representation-part-3",
+    "annobench-e1-representation-part-4",
+    "annobench-e1-representation-part-5",
+
+
+
     "tutorial",
     "tutorial-replication",
     "demo-html",
@@ -82,87 +63,23 @@
     "test-step-logic"
   ],
   "configs": {
-    "annobench-mass-study-1-part-1": {
-      "path": "annobench-mass-study-1/config-1.json"
+    "annobench-e1-representation-part-1": {
+      "path": "annobench-e1-representation/config-1.json"
     },
-    "annobench-mass-study-1-part-2": {
-      "path": "annobench-mass-study-1/config-2.json"
+    "annobench-e1-representation-part-2": {
+      "path": "annobench-e1-representation/config-2.json"
     },
-    "annobench-mass-study-1-part-3": {
-      "path": "annobench-mass-study-1/config-3.json"
+    "annobench-e1-representation-part-3": {
+      "path": "annobench-e1-representation/config-3.json"
     },
-    "annobench-mass-study-1-part-4": {
-      "path": "annobench-mass-study-1/config-4.json"
+    "annobench-e1-representation-part-4": {
+      "path": "annobench-e1-representation/config-4.json"
     },
-    "annobench-mass-study-1-part-5": {
-      "path": "annobench-mass-study-1/config-5.json"
+    "annobench-e1-representation-part-5": {
+      "path": "annobench-e1-representation/config-5.json"
     },
-    "annobench-mass-study-1-part-6": {
-      "path": "annobench-mass-study-1/config-6.json"
-    },
-    "annobench-mass-study-1-part-7": {
-      "path": "annobench-mass-study-1/config-7.json"
-    },
-    "annobench-mass-study-1-part-8": {
-      "path": "annobench-mass-study-1/config-8.json"
-    },
-    "annobench-mass-study-1-part-9": {
-      "path": "annobench-mass-study-1/config-9.json"
-    },
-    "annobench-mass-study-1-part-10": {
-      "path": "annobench-mass-study-1/config-10.json"
-    },
-    "annobench-mass-study-1-part-11": {
-      "path": "annobench-mass-study-1/config-11.json"
-    },
-    "annobench-mass-study-1-part-12": {
-      "path": "annobench-mass-study-1/config-12.json"
-    },
-    "annobench-mass-study-1-part-13": {
-      "path": "annobench-mass-study-1/config-13.json"
-    },
-    "annobench-mass-study-1-part-14": {
-      "path": "annobench-mass-study-1/config-14.json"
-    },
-    "annobench-mass-study-1-part-15": {
-      "path": "annobench-mass-study-1/config-15.json"
-    },
-    "annobench-mass-study-1-part-16": {
-      "path": "annobench-mass-study-1/config-16.json"
-    },
-    "annobench-mass-study-1-part-17": {
-      "path": "annobench-mass-study-1/config-17.json"
-    },
-    "annobench-mass-study-1-part-18": {
-      "path": "annobench-mass-study-1/config-18.json"
-    },
-    "annobench-mass-study-1-part-19": {
-      "path": "annobench-mass-study-1/config-19.json"
-    },
-    "annobench-mass-study-1-part-20": {
-      "path": "annobench-mass-study-1/config-20.json"
-    },
-    "annobench-mass-study-1-part-21": {
-      "path": "annobench-mass-study-1/config-21.json"
-    },
-    "annobench-mass-study-1-part-22": {
-      "path": "annobench-mass-study-1/config-22.json"
-    },
-    "annobench-mass-study-1-part-23": {
-      "path": "annobench-mass-study-1/config-23.json"
-    },
-    "annobench-mass-study-1-part-24": {
-      "path": "annobench-mass-study-1/config-24.json"
-    },
-    "prof-chart-no-desc-gpt-52-missing-fix": {
-      "path": "prof-chart-no-desc-gpt-52-missing-fix/config.json"
-    },
-    "prof-chart-no-desc-gpt-52": {
-      "path": "prof-chart-no-desc-gpt-52/config.json"
-    },
-    "professional-chart-prescreening": {
-      "path": "professional-chart-prescreening/config.json"
-    },
+
+
     "tutorial": {
       "path": "tutorial/config.json"
     },
