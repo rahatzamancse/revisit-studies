@@ -3,7 +3,7 @@ name: Deploy To GitHub Pages
 on:
   push:
     branches:
-      - main
+      - annobench
   workflow_dispatch:
   pull_request:
 
@@ -27,17 +27,14 @@ jobs:
 
       - run: yarn install --immutable
 
-      # If on main without env vars, build with .env file
-      - name: Build with .env file
-        if: ${{ vars.VITE_STORAGE_ENGINE == '' }}
+      - name: Build
         run: yarn build
-
-      # If on main with env vars, build with github environment variables
-      - name: Build with github environment variables
-        if: ${{ vars.VITE_STORAGE_ENGINE != '' }}
-        run: VITE_STORAGE_ENGINE=$VITE_STORAGE_ENGINE yarn build
         env:
+          VITE_BASE_PATH: ${{ vars.VITE_BASE_PATH }}
           VITE_STORAGE_ENGINE: ${{ vars.VITE_STORAGE_ENGINE }}
+          VITE_REPO_URL: ${{ vars.VITE_REPO_URL }}
+          VITE_FIREBASE_CONFIG: ${{ secrets.VITE_FIREBASE_CONFIG }}
+          VITE_RECAPTCHAV3TOKEN: ${{ secrets.VITE_RECAPTCHAV3TOKEN }}
 
       - uses: peaceiris/actions-gh-pages@v3
         name: Deploy
@@ -65,9 +62,13 @@ jobs:
       - run: yarn install --immutable
 
       - name: Build dev branch
-        run: VITE_BASE_PATH=/dev yarn build
+        run: yarn build
         env:
           VITE_BASE_PATH: "/dev/"
+          VITE_STORAGE_ENGINE: ${{ vars.VITE_STORAGE_ENGINE }}
+          VITE_REPO_URL: ${{ vars.VITE_REPO_URL }}
+          VITE_FIREBASE_CONFIG: ${{ secrets.VITE_FIREBASE_CONFIG }}
+          VITE_RECAPTCHAV3TOKEN: ${{ secrets.VITE_RECAPTCHAV3TOKEN }}
 
       - uses: peaceiris/actions-gh-pages@v3
         name: Deploy dev branch
@@ -89,6 +90,7 @@ jobs:
     steps:
       - name: Comment on PR
         uses: hasura/comment-progress@v2.2.0
+        if: ${{ github.ref != 'refs/heads/annobench' }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
@@ -105,16 +107,36 @@ jobs:
 
       - run: yarn install --immutable
 
-      # Build with github environment variables
-      - name: Build with github environment variables
-        if: ${{ vars.VITE_STORAGE_ENGINE != '' }}
-        run: VITE_STORAGE_ENGINE=$VITE_STORAGE_ENGINE VITE_BASE_PATH=$VITE_BASE_PATH yarn build
+      - name: Build annobench branch
+        if: ${{ github.ref == 'refs/heads/annobench' }}
+        run: yarn build
         env:
+          VITE_BASE_PATH: ${{ vars.VITE_BASE_PATH }}
           VITE_STORAGE_ENGINE: ${{ vars.VITE_STORAGE_ENGINE }}
+          VITE_REPO_URL: ${{ vars.VITE_REPO_URL }}
+          VITE_FIREBASE_CONFIG: ${{ secrets.VITE_FIREBASE_CONFIG }}
+          VITE_RECAPTCHAV3TOKEN: ${{ secrets.VITE_RECAPTCHAV3TOKEN }}
+
+      - uses: peaceiris/actions-gh-pages@v3
+        name: Deploy annobench branch
+        if: ${{ github.ref == 'refs/heads/annobench' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+
+      - name: Build PR preview
+        if: ${{ github.ref != 'refs/heads/annobench' }}
+        run: yarn build
+        env:
           VITE_BASE_PATH: "/study/PR${{ github.event.number }}/"
+          VITE_STORAGE_ENGINE: ${{ vars.VITE_STORAGE_ENGINE }}
+          VITE_REPO_URL: ${{ vars.VITE_REPO_URL }}
+          VITE_FIREBASE_CONFIG: ${{ secrets.VITE_FIREBASE_CONFIG }}
+          VITE_RECAPTCHAV3TOKEN: ${{ secrets.VITE_RECAPTCHAV3TOKEN }}
 
       - name: Push PR deploy preview
         uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref != 'refs/heads/annobench' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
@@ -122,6 +144,7 @@ jobs:
 
       - name: Update comment
         uses: hasura/comment-progress@v2.2.0
+        if: ${{ github.ref != 'refs/heads/annobench' }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
