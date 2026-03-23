@@ -1,6 +1,14 @@
 {
   "$schema": "https://raw.githubusercontent.com/revisit-studies/study/v2.4.1/src/parser/GlobalConfigSchema.json",
   "configsList": [
+    "annobench-e1-representation-part-1",
+    "annobench-e1-representation-part-2",
+    "annobench-e1-representation-part-3",
+    "annobench-e1-representation-part-4",
+    "annobench-e1-representation-part-5",
+
+
+
     "tutorial",
     "tutorial-replication",
     "demo-html",
@@ -55,6 +63,23 @@
     "test-step-logic"
   ],
   "configs": {
+    "annobench-e1-representation-part-1": {
+      "path": "annobench-e1-representation/config-1.json"
+    },
+    "annobench-e1-representation-part-2": {
+      "path": "annobench-e1-representation/config-2.json"
+    },
+    "annobench-e1-representation-part-3": {
+      "path": "annobench-e1-representation/config-3.json"
+    },
+    "annobench-e1-representation-part-4": {
+      "path": "annobench-e1-representation/config-4.json"
+    },
+    "annobench-e1-representation-part-5": {
+      "path": "annobench-e1-representation/config-5.json"
+    },
+
+
     "tutorial": {
       "path": "tutorial/config.json"
     },
