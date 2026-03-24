@@ -1331,7 +1331,7 @@
     "deepseek-r1_14b_937972a0__08_stacked_area_chart_t02_compare_proportions": {
       "baseComponent": "text-output-annotation-base",
       "parameters": {
-        "taskPrompt": "Annotate these two points with arrows and labels showing the dominant series and its percentage share.",
+        "taskPrompt": "Annotate these two areas with arrows and labels showing the dominant series and if its higher in percentage share.",
         "taskType": "annotation",
         "chartId": "08_stacked_area_chart",
         "taskId": "t02_compare_proportions",
@@ -3101,7 +3101,7 @@
     "deepseek-r1_14b_f4e98ee1__08_stacked_area_chart_t02_compare_proportions": {
       "baseComponent": "image-output-base",
       "parameters": {
-        "taskPrompt": "Annotate these two points with arrows and labels showing the dominant series and its percentage share.",
+        "taskPrompt": "Annotate these two areas with arrows and labels showing the dominant series and if its higher in percentage share.",
         "taskType": "annotation",
         "chartId": "08_stacked_area_chart",
         "taskId": "t02_compare_proportions",
@@ -4871,7 +4871,7 @@
     "deepseek-r1_14b_eb9a6e2d__08_stacked_area_chart_t02_compare_proportions": {
       "baseComponent": "image-output-base",
       "parameters": {
-        "taskPrompt": "Annotate these two points with arrows and labels showing the dominant series and its percentage share.",
+        "taskPrompt": "Annotate these two areas with arrows and labels showing the dominant series and if its higher in percentage share.",
         "taskType": "annotation",
         "chartId": "08_stacked_area_chart",
         "taskId": "t02_compare_proportions",
@@ -6405,7 +6405,7 @@
     "gemma3_27b_008146ed__08_stacked_area_chart_t02_compare_proportions": {
       "baseComponent": "text-output-annotation-base",
       "parameters": {
-        "taskPrompt": "Annotate these two points with arrows and labels showing the dominant series and its percentage share.",
+        "taskPrompt": "Annotate these two areas with arrows and labels showing the dominant series and if its higher in percentage share.",
         "taskType": "annotation",
         "chartId": "08_stacked_area_chart",
         "taskId": "t02_compare_proportions",
@@ -8057,7 +8057,7 @@
     "gemma3_27b_095d4bad__08_stacked_area_chart_t02_compare_proportions": {
       "baseComponent": "image-output-base",
       "parameters": {
-        "taskPrompt": "Annotate these two points with arrows and labels showing the dominant series and its percentage share.",
+        "taskPrompt": "Annotate these two areas with arrows and labels showing the dominant series and if its higher in percentage share.",
         "taskType": "annotation",
         "chartId": "08_stacked_area_chart",
         "taskId": "t02_compare_proportions",
@@ -9709,7 +9709,7 @@
     "gemma3_27b_0881509f__08_stacked_area_chart_t02_compare_proportions": {
       "baseComponent": "image-output-base",
       "parameters": {
-        "taskPrompt": "Annotate these two points with arrows and labels showing the dominant series and its percentage share.",
+        "taskPrompt": "Annotate these two areas with arrows and labels showing the dominant series and if its higher in percentage share.",
         "taskType": "annotation",
         "chartId": "08_stacked_area_chart",
         "taskId": "t02_compare_proportions",
@@ -11479,7 +11479,7 @@
     "claude-sonnet-4-20250514_bebe17a8__08_stacked_area_chart_t02_compare_proportions": {
       "baseComponent": "image-output-base",
       "parameters": {
-        "taskPrompt": "Annotate these two points with arrows and labels showing the dominant series and its percentage share.",
+        "taskPrompt": "Annotate these two areas with arrows and labels showing the dominant series and if its higher in percentage share.",
         "taskType": "annotation",
         "chartId": "08_stacked_area_chart",
         "taskId": "t02_compare_proportions",
@@ -13249,7 +13249,7 @@
     "gpt-5.2_1d2a6b43__08_stacked_area_chart_t02_compare_proportions": {
       "baseComponent": "image-output-base",
       "parameters": {
-        "taskPrompt": "Annotate these two points with arrows and labels showing the dominant series and its percentage share.",
+        "taskPrompt": "Annotate these two areas with arrows and labels showing the dominant series and if its higher in percentage share.",
         "taskType": "annotation",
         "chartId": "08_stacked_area_chart",
         "taskId": "t02_compare_proportions",
@@ -15019,7 +15019,7 @@
     "claude-sonnet-4-20250514_29722925__08_stacked_area_chart_t02_compare_proportions": {
       "baseComponent": "image-output-base",
       "parameters": {
-        "taskPrompt": "Annotate these two points with arrows and labels showing the dominant series and its percentage share.",
+        "taskPrompt": "Annotate these two areas with arrows and labels showing the dominant series and if its higher in percentage share.",
         "taskType": "annotation",
         "chartId": "08_stacked_area_chart",
         "taskId": "t02_compare_proportions",
@@ -16789,7 +16789,7 @@
     "claude-sonnet-4-20250514_50537c84__08_stacked_area_chart_t02_compare_proportions": {
       "baseComponent": "image-output-base",
       "parameters": {
-        "taskPrompt": "Annotate these two points with arrows and labels showing the dominant series and its percentage share.",
+        "taskPrompt": "Annotate these two areas with arrows and labels showing the dominant series and if its higher in percentage share.",
         "taskType": "annotation",
         "chartId": "08_stacked_area_chart",
         "taskId": "t02_compare_proportions",
@@ -18559,7 +18559,7 @@
     "gemini-2.5-flash_484a077d__08_stacked_area_chart_t02_compare_proportions": {
       "baseComponent": "image-output-base",
       "parameters": {
-        "taskPrompt": "Annotate these two points with arrows and labels showing the dominant series and its percentage share.",
+        "taskPrompt": "Annotate these two areas with arrows and labels showing the dominant series and if its higher in percentage share.",
         "taskType": "annotation",
         "chartId": "08_stacked_area_chart",
         "taskId": "t02_compare_proportions",
@@ -20329,7 +20329,7 @@
     "gemini-2.5-flash_0e931f1f__08_stacked_area_chart_t02_compare_proportions": {
       "baseComponent": "text-output-annotation-base",
       "parameters": {
-        "taskPrompt": "Annotate these two points with arrows and labels showing the dominant series and its percentage share.",
+        "taskPrompt": "Annotate these two areas with arrows and labels showing the dominant series and if its higher in percentage share.",
         "taskType": "annotation",
         "chartId": "08_stacked_area_chart",
         "taskId": "t02_compare_proportions",
@@ -22099,7 +22099,7 @@
     "gpt-5.2_f1499971__08_stacked_area_chart_t02_compare_proportions": {
       "baseComponent": "image-output-base",
       "parameters": {
-        "taskPrompt": "Annotate these two points with arrows and labels showing the dominant series and its percentage share.",
+        "taskPrompt": "Annotate these two areas with arrows and labels showing the dominant series and if its higher in percentage share.",
         "taskType": "annotation",
         "chartId": "08_stacked_area_chart",
         "taskId": "t02_compare_proportions",
@@ -23869,7 +23869,7 @@
     "gpt-5.2_fa8bd2bb__08_stacked_area_chart_t02_compare_proportions": {
       "baseComponent": "image-output-base",
       "parameters": {
-        "taskPrompt": "Annotate these two points with arrows and labels showing the dominant series and its percentage share.",
+        "taskPrompt": "Annotate these two areas with arrows and labels showing the dominant series and if its higher in percentage share.",
         "taskType": "annotation",
         "chartId": "08_stacked_area_chart",
         "taskId": "t02_compare_proportions",
@@ -25639,7 +25639,7 @@
     "gemini-2.5-flash_e35dff21__08_stacked_area_chart_t02_compare_proportions": {
       "baseComponent": "image-output-base",
       "parameters": {
-        "taskPrompt": "Annotate these two points with arrows and labels showing the dominant series and its percentage share.",
+        "taskPrompt": "Annotate these two areas with arrows and labels showing the dominant series and if its higher in percentage share.",
         "taskType": "annotation",
         "chartId": "08_stacked_area_chart",
         "taskId": "t02_compare_proportions",
@@ -27409,7 +27409,7 @@
     "gemini-2.5-flash_3d031e8b__08_stacked_area_chart_t02_compare_proportions": {
       "baseComponent": "image-output-base",
       "parameters": {
-        "taskPrompt": "Annotate these two points with arrows and labels showing the dominant series and its percentage share.",
+        "taskPrompt": "Annotate these two areas with arrows and labels showing the dominant series and if its higher in percentage share.",
         "taskType": "annotation",
         "chartId": "08_stacked_area_chart",
         "taskId": "t02_compare_proportions",
@@ -29179,7 +29179,7 @@
     "gpt-5.2_fa2e5e86__08_stacked_area_chart_t02_compare_proportions": {
       "baseComponent": "image-output-base",
       "parameters": {
-        "taskPrompt": "Annotate these two points with arrows and labels showing the dominant series and its percentage share.",
+        "taskPrompt": "Annotate these two areas with arrows and labels showing the dominant series and if its higher in percentage share.",
         "taskType": "annotation",
         "chartId": "08_stacked_area_chart",
         "taskId": "t02_compare_proportions",
